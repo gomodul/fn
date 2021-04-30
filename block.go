@@ -4,9 +4,13 @@ package fn
 type Exception interface{}
 
 // Throw godoc.
-func Throw(e Exception) {
-	if e != nil {
-		panic(e)
+func Throw(e ...Exception) {
+	if len(e) == 0 {
+		panic("something wrong")
+	}
+
+	if len(e) > 0 && e[0] != nil {
+		panic(e[0])
 	}
 }
 
